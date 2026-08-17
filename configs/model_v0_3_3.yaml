@@ -1,0 +1,37 @@
+model:
+  hidden_dim: 32
+  num_hetero_blocks: 3
+  dropout: 0.0
+  num_layers: 3
+  num_actions: 4
+  runtime_validate_graph: false
+features:
+  supply_dim: 8
+  layer_state_dim: 2
+  partition_state_dim: 12
+  partition_demand_dim: 6
+  critical_net_dim: 8
+  num_layer_ids: 16
+  track_index: 0
+  blockage_index: 1
+  default_width_index: 2
+  default_spacing_index: 3
+  physical_edge_dim: 4
+  cross_layer_edge_dim: 4
+  boundary_edge_dim: 6
+  incidence_edge_dim: 3
+physics:
+  epsilon: 1.0e-6
+  enforce_nonnegative_capacity: true
+  baseline_action_id: 0
+readout:
+  directional_pooling: attention
+  global_pooling: attention
+training:
+  loss: huber
+  weighting: uncertainty
+  lambda_congestion: 1.0
+  lambda_drc: 1.0
+  lambda_wns: 1.0
+  lambda_tns: 1.0
+
